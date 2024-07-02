@@ -25,6 +25,9 @@ public class Nuts extends Product{
     public int getSizeInGrams() {
         return sizeInGrams;
     }
+    public String getBarCode() {
+        return barCode;
+    }
 
     public void setSizeInGrams(int sizeInGrams) {
         if (sizeInGrams < 0) {
@@ -37,18 +40,12 @@ public class Nuts extends Product{
     @Override
     String examine() {
         return "Nuts are a great source of protein and healthy fats. " +
-                "\nYou want to buy all of them?! Well only have " + getAmount() + "of it" +
+                "\nYou want to buy all of them?! Well only have " + getAmount() + " of it" +
                 "\nPrice:  " + getPrice() + " SEK.";
     }
 
     @Override
     String use() {
-        if (getAmount() > 0) {
-            setAmount(getAmount() - 1);
-            return "Here it comes the " + getProductName() + " nuts. ";
-        }
-        else {
-            return "Sorry, we are out of " + getProductName() + " nuts.";
-        }
+        return "Here it comes the " + getProductName() + " nuts. ";
     }
 }

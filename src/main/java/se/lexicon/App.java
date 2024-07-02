@@ -2,8 +2,8 @@ package se.lexicon;
 import Model.*;
 
 /**
- *
- *
+ *  Vending Machine Workshop.
+ *  The main class of the application.
  */
 public class App 
 {
@@ -29,7 +29,7 @@ public class App
 
         // Buy a product.
         Product product = vendingMachine.request(101);
-        System.out.println("Product bought: " + product.getProductName());
+        System.out.println("Product bought: " + product.getProductName() + " for " + product.getPrice() + " SEK.\n");
 
         System.out.println(" id Name  Amount" );
         // Update product list.
@@ -49,7 +49,7 @@ public class App
         // End the session.
         int change = vendingMachine.endSession();
         int dpo = vendingMachine.getBalance();
-        System.out.println("Session ended.");
+        System.out.println("\nSession ended.");
         System.out.println("Change: " + change + "\nDeposit Pool: " + dpo);
 
 

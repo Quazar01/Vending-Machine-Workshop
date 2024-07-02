@@ -28,6 +28,7 @@ public class VendingMachineImpl implements VendingMachine{
 
     @Override
     public Product request(int productId) {
+
         for (Product product : products) {
             if (product.getId() == productId) {
                 if (product.getAmount() == 0) {
@@ -36,10 +37,13 @@ public class VendingMachineImpl implements VendingMachine{
                 if (product.getPrice() <= depositPool) {
                     depositPool -= (int) product.getPrice();
                     product.amount -= 1;
+                    product.use();
                     return product;
                 } else {
                     throw new IllegalArgumentException("Insufficient funds.");
                 }
+            } else {
+                throw new IllegalArgumentException("Product not found.");
             }
         }
         return null;
@@ -47,7 +51,7 @@ public class VendingMachineImpl implements VendingMachine{
 
     @Override
     public int endSession() {
-        int change = (int) depositPool;
+        int change = depositPool;
         depositPool = 0;
         return change;
     }

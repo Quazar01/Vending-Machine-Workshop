@@ -1,10 +1,8 @@
 package Model;
 
-import java.security.PublicKey;
 import java.util.UUID;
 
 public class ProtienBar extends Product{
-    private int amount;
     private String flavor;
     private String barCode;
 
@@ -47,19 +45,14 @@ public class ProtienBar extends Product{
     @Override
     String examine() {
         return "High quality protein bar with " + flavor + " flavor." +
-                "\nYou want to buy all of them?! Well only have " + amount + "of it" +
+                "\nYou want to buy all of them?! Well only have " + amount + " of it" +
                 "\nPrice:  " + getPrice() + " SEK. " +
                 "Pssst, you can use it as a snack or after workout.";
     }
 
     @Override
     String use() {
-        if (amount > 0) {
-            amount--;
-            return "Here it comes the " + flavor + " protein bar. ";
-        }
-        else {
-            return "Sorry, we are out of " + flavor + " protein bar.";
-        }
+
+        return "Here it comes the " + getProductName() + " protein bar. ";
     }
 }

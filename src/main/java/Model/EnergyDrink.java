@@ -44,17 +44,12 @@ public class EnergyDrink extends Product {
     @Override
     String examine() {
         return "Energize yourself with " + getProductName() + " with " + sizeInML + " ml." +
-                "\nYou want to buy all of them?! Well only have " + getAmount() + "of it" +
+                "\nYou want to buy all of them?! Well only have " + getAmount() + " of it" +
                 "\nPrice:  " + getPrice() + " SEK.";
     }
 
     @Override
     String use() {
-        if (getAmount() > 0) {
-            setAmount(getAmount() - 1);
-            return "Here it comes the " + getProductName() + " energy drink. ";
-        } else {
-            return "Sorry, we are out of " + getProductName() + " energy drink.";
-        }
+        return "Here it comes the " + getProductName() + " energy drink. ";
     }
 }

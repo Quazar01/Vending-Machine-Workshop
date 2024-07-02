@@ -13,7 +13,7 @@ public class EnergyDrink extends Product {
         setSizeInML(sizeInML);
     }
 
-    public EnergyDrink(String productName, int amount, double price) {
+    public EnergyDrink(String productName, double price, int amount) {
         super(productName, price, amount);
         setBarCode();
         setAmount(amount);

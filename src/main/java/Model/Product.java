@@ -1,7 +1,7 @@
 package Model;
 
 public abstract class Product {
-
+    private static int idCounter = 101;
     int id;
     String productName;
     double price;
@@ -16,7 +16,7 @@ public abstract class Product {
 
     // Helper methods.
     private void setId() {
-        this.id = (int) (Math.random() * (1000 - 100 + 1) + 100);
+        this.id = idCounter++;
     }
 
 

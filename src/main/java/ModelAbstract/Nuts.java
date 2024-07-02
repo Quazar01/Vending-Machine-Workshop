@@ -1,4 +1,4 @@
-package Model;
+package ModelAbstract;
 
 import java.util.UUID;
 
@@ -6,13 +6,13 @@ public class Nuts extends Product{
     private String barCode;
     private int sizeInGrams;
 
-    public Nuts(String productName, double price, int amount, int sizeInGrams) {
-        super(productName, price, amount);
+    public Nuts(String productName, double price, int quantity, int sizeInGrams) {
+        super(productName, price, quantity);
         setSizeInGrams(sizeInGrams);
     }
 
-    public Nuts(String productName, double price, int amount) {
-        super(productName, price, amount);
+    public Nuts(String productName, double price, int quantity) {
+        super(productName, price, quantity);
         this.sizeInGrams = 150;
     }
 
@@ -38,14 +38,14 @@ public class Nuts extends Product{
 
 
     @Override
-    String examine() {
+    public String examine() {
         return "Nuts are a great source of protein and healthy fats. " +
-                "\nYou want to buy all of them?! Well only have " + getAmount() + " of it" +
+                "\nYou want to buy all of them?! Well only have " + getQuantity() + " of it" +
                 "\nPrice:  " + getPrice() + " SEK.";
     }
 
     @Override
-    String use() {
+    public String use() {
         return "Here it comes the " + getProductName() + " nuts. ";
     }
 }

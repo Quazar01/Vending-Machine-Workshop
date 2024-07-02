@@ -1,17 +1,17 @@
-package Model;
+package ModelAbstract;
 
 public abstract class Product {
     private static int idCounter = 101;
     int id;
     String productName;
     double price;
-    int amount;
+    int quantity;
 
-    public Product (String productName, double price, int amount) {
+    public Product (String productName, double price, int quantity) {
         setId();
         setProductName(productName);
         this.price = price;
-        setAmount(amount);
+        setQuantity(quantity);
     }
 
     // Helper methods.
@@ -30,8 +30,8 @@ public abstract class Product {
     public double getPrice() {
         return price;
     }
-    public int getAmount() {
-        return amount;
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setProductName(String productName) {
@@ -46,15 +46,14 @@ public abstract class Product {
         }
         this.price = price;
     }
-    public void setAmount (int amount) {
+    public void setQuantity(int amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Amount cannot be negative.");
         }
-        this.amount = amount;
+        this.quantity = amount;
     }
 
     // Abstract methods.
-
-    abstract String examine();
-    abstract String use();
+    public abstract String examine();
+    public abstract String use();
 }

@@ -1,23 +1,23 @@
-package Model;
+package ModelAbstract;
 
 import java.util.UUID;
 
-public class ProtienBar extends Product{
+public class ProteinBar extends Product{
     private String flavor;
     private String barCode;
 
     // Constructors
-    public ProtienBar(String productName, int amount, double price, String flavor) {
-        super(productName, price, amount);
+    public ProteinBar(String productName, int quantity, double price, String flavor) {
+        super(productName, price, quantity);
         setBarCode();
-        setAmount(amount);
+        setQuantity(quantity);
         setFlavor(flavor);
     }
 
-    public ProtienBar(String productName, int amount, double price) {
+    public ProteinBar(String productName, int amount, double price) {
         super(productName, price, amount);
         setBarCode();
-        setAmount(amount);
+        setQuantity(amount);
         this.flavor = "Chocolate";
     }
 
@@ -43,15 +43,15 @@ public class ProtienBar extends Product{
     }
 
     @Override
-    String examine() {
+    public String examine() {
         return "High quality protein bar with " + flavor + " flavor." +
-                "\nYou want to buy all of them?! Well only have " + amount + " of it" +
+                "\nYou want to buy all of them?! Well only have " + quantity + " of it" +
                 "\nPrice:  " + getPrice() + " SEK. " +
                 "Pssst, you can use it as a snack or after workout.";
     }
 
     @Override
-    String use() {
+    public String use() {
 
         return "Here it comes the " + getProductName() + " protein bar. ";
     }

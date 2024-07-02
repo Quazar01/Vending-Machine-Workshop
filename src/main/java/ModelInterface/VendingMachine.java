@@ -1,6 +1,7 @@
-package Model;
+package ModelInterface;
 
 public interface VendingMachine {
+
     void addCurrency(int amount);
     int getBalance();
     Product request(int productId);

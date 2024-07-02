@@ -1,4 +1,4 @@
-package Model;
+package ModelAbstract;
 
 import java.util.UUID;
 
@@ -7,8 +7,8 @@ public class EnergyDrink extends Product {
     private int sizeInML;
 
     // Constructors
-    public EnergyDrink(String productName, int amount, double price, int sizeInML) {
-        super(productName, price, amount);
+    public EnergyDrink(String productName, int quantity, double price, int sizeInML) {
+        super(productName, price, quantity);
         setBarCode();
         setSizeInML(sizeInML);
     }
@@ -16,7 +16,7 @@ public class EnergyDrink extends Product {
     public EnergyDrink(String productName, double price, int amount) {
         super(productName, price, amount);
         setBarCode();
-        setAmount(amount);
+        setQuantity(amount);
         this.sizeInML = 330;
     }
 
@@ -42,14 +42,14 @@ public class EnergyDrink extends Product {
 
 
     @Override
-    String examine() {
+    public String examine() {
         return "Energize yourself with " + getProductName() + " with " + sizeInML + " ml." +
-                "\nYou want to buy all of them?! Well only have " + getAmount() + " of it" +
+                "\nYou want to buy all of them?! Well only have " + getQuantity() + " of it" +
                 "\nPrice:  " + getPrice() + " SEK.";
     }
 
     @Override
-    String use() {
+    public String use() {
         return "Here it comes the " + getProductName() + " energy drink. ";
     }
 }

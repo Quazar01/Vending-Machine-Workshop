@@ -1,9 +1,10 @@
-package Model;
+package ModelInterface;
 
 public class VendingMachineImpl implements VendingMachine{
     private Product[] products;
     private int depositPool;
 
+    // Constructor
     public VendingMachineImpl(Product[] products) {
         this.products = products;
         this.depositPool = 0;
@@ -11,14 +12,13 @@ public class VendingMachineImpl implements VendingMachine{
     @Override
     public void addCurrency(int amount) {
         int[] validAmounts = new int[] {1, 5, 10, 20, 50, 100, 200, 500, 1000};
-
         for (int validAmount : validAmounts) {
             if (amount == validAmount) {
                 depositPool += amount;
                 return;
             }
         }
-        throw new IllegalArgumentException("Invalid amount.");
+        System.out.println("Invalid currency. Please use valid currency.");
     }
 
     @Override
@@ -28,24 +28,23 @@ public class VendingMachineImpl implements VendingMachine{
 
     @Override
     public Product request(int productId) {
-
         for (Product product : products) {
             if (product.getId() == productId) {
-                if (product.getAmount() == 0) {
-                    throw new IllegalArgumentException("Product is out of stock.");
+                if (product.getQuantity() == 0) {
+                    System.out.printf("Product %s is out of stock.\n", product.getProductName());
+                    return null;
                 }
                 if (product.getPrice() <= depositPool) {
                     depositPool -= (int) product.getPrice();
-                    product.amount -= 1;
-                    product.use();
+                    product.setQuantity(product.getQuantity() - 1);
                     return product;
                 } else {
-                    throw new IllegalArgumentException("Insufficient funds.");
+                    System.out.println("Insufficient funds.");
+                    return null;
                 }
-            } else {
-                throw new IllegalArgumentException("Product not found.");
             }
         }
+        System.out.println("Product not found.");
         return null;
     }
 
@@ -63,16 +62,15 @@ public class VendingMachineImpl implements VendingMachine{
                 return product.examine();
             }
         }
-        throw new IllegalArgumentException("Product not found.");
+        return "Product not found.";
     }
 
     @Override
     public String[] getProducts() {
         String[] productNames = new String[products.length];
         for (int i = 0; i < products.length; i++) {
-            int prodId = products[i].getId();
-            String prodName = products[i].getProductName();
-            productNames[i] = prodId + " " + prodName + "    " + products[i].getAmount();
+            productNames[i] = products[i].getId() + " " + products[i].getProductName() + "   "
+                    + products[i].getQuantity() + "       " + products[i].getPrice();
         }
         return productNames;
     }

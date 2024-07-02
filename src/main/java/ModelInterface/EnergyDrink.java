@@ -1,0 +1,98 @@
+package ModelInterface;
+
+public class EnergyDrink implements Product{
+    private int id;
+    private String productName;
+    private double price;
+    private int quantity;
+    private int volumeInMl;
+
+    // Constructors
+    public EnergyDrink(int id, String productName, int quantity, double price, int volumeInMl) {
+        setId(id);
+        setProductName(productName);
+        setPrice(price);
+        setQuantity(quantity);
+        setVolumeInMl(volumeInMl);
+    }
+
+    // In case the volume is not specified, we assume it is 330 ml.
+    public EnergyDrink(int id, String productName, int quantity, double price) {
+        setId(id);
+        setProductName(productName);
+        setPrice(price);
+        setQuantity(quantity);
+        this.volumeInMl = 330;
+    }
+
+    // Helper Methods.
+    private void setId(int id){
+        if (id < 0) {
+            throw new IllegalArgumentException("Id cannot be negative.");
+        }
+        this.id = id;
+    }
+    private void setVolumeInMl(int volumeInMl) {
+        if (volumeInMl < 0) {
+            throw new IllegalArgumentException("Volume cannot be negative.");
+        }
+        this.volumeInMl = volumeInMl;
+    }
+
+    @Override
+    public String examine() {
+        return "Energize yourself with " + productName + " with " + volumeInMl + " ml." +
+                "\nYou want to buy all of them?! Well only have " + quantity + " of it" +
+                "\nPrice:  " + getPrice() + " SEK.";
+    }
+
+    @Override
+    public String use() {
+        return "Here it comes the " + productName + " energy drink. ";
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public void setProductName(String productName) {
+        if (productName == null || productName.isEmpty()) {
+            throw new IllegalArgumentException("Product name cannot be empty.");
+        }
+        this.productName = productName;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setPrice(double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative.");
+        }
+        this.price = price;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public void setQuantity(int quantity) {
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative.");
+        }
+        this.quantity = quantity;
+    }
+}
+

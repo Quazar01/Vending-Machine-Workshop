@@ -1,5 +1,5 @@
 package se.lexicon;
-import ModelInterface.*;
+import ModelAbstract.*;
 
 /**
  *  Vending Machine Workshop.
@@ -7,14 +7,13 @@ import ModelInterface.*;
  */
 public class App 
 {
-    private static int id = 100;
     public static void main( String[] args )
     {
         // Create products.
         Product[] products = new Product[3];
-        products[0] = new ProteinBar(generateId(), "Quest", 10, 25.5, "Chocolate");
-        products[1] = new EnergyDrink(generateId(), "NOCCO", 20, 20.5, 500);
-        products[2] = new Nuts(generateId(), "Cashew", 15, 30.5, 150);
+        products[0] = new ProteinBar("Quest", 25, 10.5, "Coconuts");
+        products[1] = new EnergyDrink("NOCOO", 10, 33.5, 330);
+        products[2] = new Nuts("Cashew", 15, 100, 125);
 
         // Create vending machine.
         VendingMachineImpl vendingMachine = new VendingMachineImpl(products);
@@ -60,8 +59,4 @@ public class App
 
     }
 
-    private static int generateId() {
-        id = id + 1;
-        return id;
-    }
 }

@@ -46,11 +46,9 @@ public class VendingMachineImpl implements VendingMachine{
                     System.out.println("Insufficient funds.");
                     return null;
                 }
-            } else {
-                System.out.println("Product not found.");
-                return null;
             }
         }
+        System.out.println("Product not found.");
         return null;
     }
 
